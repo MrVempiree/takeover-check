@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "takeover-check"
+version = "1.0.0"
+description = "Subdomain takeover fingerprint checker for authorised web security testing"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [
+    { name = "Lavish Gangwar" }
+]
+keywords = ["subdomain-takeover", "dns", "security", "pentest", "bug-bounty"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Information Technology",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Security",
+]
+
+[project.scripts]
+takeover-check = "takeover_check.cli:main"
+
+[project.optional-dependencies]
+dev = ["pytest>=7"]
+
+[tool.setuptools.packages.find]
+include = ["takeover_check*"]
+
+[tool.setuptools.package-data]
+takeover_check = ["data/*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
